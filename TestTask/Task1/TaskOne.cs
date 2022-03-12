@@ -18,12 +18,11 @@ namespace TestTask.Task1
             var dataDays  = FindMaxMin(data);
             var text = dataDays.JoinToString();
             _workFile.WriteToFile(Environment.CurrentDirectory + @"\task1.txt", text);
-            
         }
 
 
 
-        private List<MaxMinDay> FindMaxMin(in List<Bar> data)
+        private static List<MaxMinDay> FindMaxMin(in List<Bar> data)
         {
             var dic = data.GroupByDate();
             var result = new List<MaxMinDay>();

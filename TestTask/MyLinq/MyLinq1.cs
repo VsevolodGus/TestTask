@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading.Tasks;
+using TestTask.Task1;
 
 namespace TestTask.MyLinq
 {
-    public static class MyLinq
+    public static partial class MyLinq
     {
         public static bool ContainsMaxMinDayByDate(this IEnumerable<MaxMinDay> maxminDays, DateTime date)
         {
@@ -95,9 +95,9 @@ namespace TestTask.MyLinq
 
             stringBuilder.Append(bar.Symbol + ',' + bar.Description + ',' +
                                  bar.Date.ToString("dd-mm-yyyy") + ',' + bar.Time.ToString() + ','
-                                 + bar.Open + bar.High + ','
-                                 + bar.Low + ',' + bar.Close + ','
-                                 + bar.TotalVolume);
+                                 + bar.Open.ToString().Replace(',','.') + bar.High.ToString().Replace(',', '.') + ','
+                                 + bar.Low.ToString().Replace(',', '.') + ',' + bar.Close.ToString().Replace(',', '.') + ','
+                                 + bar.TotalVolume.ToString().Replace(',', '.'));
 
             return stringBuilder.ToString();
         }

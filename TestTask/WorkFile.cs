@@ -64,16 +64,18 @@ namespace TestTask
             {
                 var str = line.Split(',', StringSplitOptions.RemoveEmptyEntries);
 
-                var item = new Bar();
-                item.Symbol = str[0];
-                item.Description = str[1];
-                item.Date = Convert.ToDateTime(str[2]);
-                item.Time = Convert.ToDateTime(str[2] + ' ' + str[3]).TimeOfDay;
-                item.Open = Convert.ToDecimal(str[4].Replace('.',','));
-                item.High = Convert.ToDecimal(str[5].Replace('.', ','));
-                item.Low = Convert.ToDecimal(str[6].Replace('.',','));
-                item.Close = Convert.ToDecimal(str[7].Replace('.',','));
-                item.TotalVolume = Convert.ToDecimal(str[8].Replace('.',','));
+                var item = new Bar()
+                {
+                    Symbol = str[0],
+                    Description = str[1],
+                    Date = Convert.ToDateTime(str[2]),
+                    Time = Convert.ToDateTime(str[2] + ' ' + str[3]).TimeOfDay,
+                    Open = Convert.ToDecimal(str[4].Replace('.', ',')),
+                    High = Convert.ToDecimal(str[5].Replace('.', ',')),
+                    Low = Convert.ToDecimal(str[6].Replace('.', ',')),
+                    Close = Convert.ToDecimal(str[7].Replace('.', ',')),
+                    TotalVolume = Convert.ToDecimal(str[8].Replace('.', ',')),
+                };
 
                 result.Add(item);
             }
