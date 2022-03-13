@@ -94,7 +94,7 @@ namespace TestTask.MyLinq
             var stringBuilder = new StringBuilder();
 
             stringBuilder.Append(bar.Symbol + ',' + bar.Description + ',' +
-                                 bar.Date.ToString("dd-mm-yyyy") + ',' + bar.Time.ToString() + ','
+                                 bar.Date.ToString("dd.MM.yyyy") + ',' + bar.Time.ToString() + ','
                                  + bar.Open.ToString().Replace(',','.') + bar.High.ToString().Replace(',', '.') + ','
                                  + bar.Low.ToString().Replace(',', '.') + ',' + bar.Close.ToString().Replace(',', '.') + ','
                                  + bar.TotalVolume.ToString().Replace(',', '.'));

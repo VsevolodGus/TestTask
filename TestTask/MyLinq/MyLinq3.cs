@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq; // только для ToArray в MyContains
 
 namespace TestTask.MyLinq
@@ -14,7 +15,9 @@ namespace TestTask.MyLinq
             var beginIndex = 0;
             var endIndex = mainBars.Length - 1;
 
-            while (beginIndex < endIndex)
+
+
+            while (beginIndex <= endIndex)
             {
                 var middleIndex = (beginIndex + endIndex) / 2;
 
@@ -58,6 +61,7 @@ namespace TestTask.MyLinq
 
             foreach (var item in bars)
             {
+                
                 if (result.MyContains(item))
                     continue;
 
@@ -85,8 +89,13 @@ namespace TestTask.MyLinq
         {
             var result = new List<Bar>();
 
+           
+
             foreach (var item in thisBars)
             {
+                if (item.Time == Convert.ToDateTime("02.01.2020 08:30:00").TimeOfDay)
+                { }
+
                 if (otherBars.MyContains(item))
                     result.Add(item);
             }
