@@ -1,8 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Linq; // для выхода корркктности сортировки файла GetDataFromFile
 using System.Collections.Generic;
 
 namespace TestTask
@@ -34,28 +32,6 @@ namespace TestTask
             return result;
         }
 
-
-        public List<Bar> GetDataFromFile(string path)
-        {
-            var lines = ReadFromFile(path);
-            return ConvertTextToModels(lines);
-        }
-
-
-        public void WriteToFile(string path, string text)
-        {
-            if (!File.Exists(path))
-            {
-                File.CreateText(path).Dispose();
-            }
-
-            using (var writer = new StreamWriter(path))
-            {
-                writer.WriteLine(text);
-            }
-        }
-
-
         private List<Bar> ConvertTextToModels(List<string> lines)
         {
             var result = new List<Bar>();
@@ -82,6 +58,30 @@ namespace TestTask
 
             return result;
         }
+
+        public List<Bar> GetDataFromFile(string path)
+        {
+            var lines = ReadFromFile(path);
+            // OrderBy для чтобы  данные точно были отсортированы
+            return ConvertTextToModels(lines).OrderBy(c => c.DateTime).ToList();
+        }
+
+
+        public void WriteToFile(string path, string text)
+        {
+            if (!File.Exists(path))
+            {
+                File.CreateText(path).Dispose();
+            }
+
+            using (var writer = new StreamWriter(path))
+            {
+                writer.WriteLine(text);
+            }
+        }
+
+
+      
 
 
     }
