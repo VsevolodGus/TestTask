@@ -1,3 +1,3 @@
 ﻿using TestTask;
 
-var space = ReadFileWorker.GetModelSpace();
+var space = GettingSpace.GetModelSpaceFromFile();
