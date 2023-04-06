@@ -5,30 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TestTask;
-internal static class SpaceService
+public static class SpaceService
 {
-    private static HashSet<(int, int)> AsteroidCoordinates = new();
-    public static int CountAsteroid(int[][] space)
+
+    public static int CountAsteroidInSpace(this int[][] space)
     {
-        for (int i = 0; i < space.Length; i++)
-        {
-            if(space[i].All(c=> c ==  0))
-                continue;
+        var result = 0;
+        foreach(var line in space)
+            result += line.Count(c => c == 1);
 
-            for (int j = 0; j < space[i].Length; j++)
-            {
-                if (space[i][j] == 0)
-                    continue;
-
-                space.ads(i,j);
-            }
-        }
-
-        return AsteroidCoordinates.Count;
-    }
-
-    private static void ads(this int[][] space, int x, int y)
-    {
-        AsteroidCoordinates.Add((x,y));
+        return result;
     }
 }
