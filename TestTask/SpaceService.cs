@@ -29,7 +29,7 @@ public static class SpaceService
         rootNodes.Add(node);
         var maxX = space.Length;
         var maxY = space.Min(c=> c.Length);
-        //TODO добавить логику 
+        // TODO добавить логику 
         // нужно добавлять к узлу соседние элементы, делая проверку на кол-во  на ограничения на границы массива
         // делать это в цикле, не в рекурсии
 
@@ -41,14 +41,25 @@ public static class SpaceService
         // up right corner [x+1][y-1]
         // down left corner [x-1][y+1]
         // down right corner [x+1][y+1]
-
+        var queueNodes = new Queue<Node>();
+        queueNodes.Enqueue(node);
         do
         {
+            //up [x][y-1]
+            //left [x-1][y]
+            //right [x+1][y]
+            //down [x][y+1]
+            // up left corner [x-1][y-1]
+            // up right corner [x+1][y-1]
+            // down left corner [x-1][y+1]
+            // down right corner [x+1][y+1]
+
             if (point.X == 0)
             {
                 // do not left [x-1][y]
                 // do not up left corner [x-1][y-1]
                 // do not down left corner [x-1][y+1]
+                queueNodes.Enqueue(node);
             }
 
             if (point.Y == 0)
@@ -73,6 +84,9 @@ public static class SpaceService
             }
 
         }while(false);
-
     }
+
+    private static Node GetCall(this int[][] space, int x, int y)
+        => new (new Point(x, y, space[x][y]));
+
 }
