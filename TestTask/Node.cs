@@ -1,14 +1,10 @@
 ﻿namespace TestTask;
 internal class Node
 {
-    public Node(int x, int y)
-    {
-        Point = new Point(x, y);
-    }
-
     public Node(Point point)
     {
         Point = point;
+        Children = new List<Node>();
     }
 
     public Node(Node node)
@@ -19,7 +15,7 @@ internal class Node
 
     public Point Point { get; }
 
-    public ICollection<Node> Children { get; } = new List<Node>();
+    public ICollection<Node> Children { get; }
 
 }
 

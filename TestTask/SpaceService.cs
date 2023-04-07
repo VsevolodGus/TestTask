@@ -12,19 +12,24 @@ public static class SpaceService
             {
                 var point = new Point(i, j, space[i][j]);
 
-                if (point.Value == 1)
-                {
-                }
-
-
-                if (point.Value == 1 && !AlreadyExistsPointAsteroid(point))
-                    rootNodes.Add(new Node(point));
+                if (point.Value == 1 && !AlreadyExistsPointInAsteroids(point))
+                    AddAsteriods(space, point);
             }
         }
 
         return rootNodes.Count;
     }
 
-    private static bool AlreadyExistsPointAsteroid(Point point)
+    private static bool AlreadyExistsPointInAsteroids(Point point)
         => rootNodes.Any(c => c.FindPointInTree(point));
+
+    private static void AddAsteriods(this int[][] space, Point point)
+    {
+        var node = new Node(point);
+        rootNodes.Add(node);
+
+        //TODO добавить логику 
+        // нужно добавлять к узлу соседние элементы, делая проверку на кол-во  на ограничения на границы массива
+        // делать это в цикле, не в рекурсии
+    }
 }
