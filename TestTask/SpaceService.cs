@@ -13,7 +13,7 @@ public static class SpaceService
                 var point = new Point(i, j, space[i][j]);
 
                 if (point.Value == 1 && !AlreadyExistsPointInAsteroids(point))
-                    AddAsteriods(space, point);
+                    AddAsteroids(space, point);
             }
         }
 
@@ -23,7 +23,7 @@ public static class SpaceService
     private static bool AlreadyExistsPointInAsteroids(Point point)
         => rootNodes.Any(c => c.FindPointInTree(point));
 
-    private static void AddAsteriods(this int[][] space, Point point)
+    private static void AddAsteroids(this int[][] space, Point point)
     {
         var node = new Node(point);
         rootNodes.Add(node);
