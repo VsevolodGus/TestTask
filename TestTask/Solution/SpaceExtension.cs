@@ -5,7 +5,7 @@ namespace TestTask.Solution;
 internal static class SpaceExtension
 {
 
-    internal static Point[] GetNeighboringPoints(this int[][] space, Point point)
+    internal static Point[] GetNeighboringPoints(this int[][] space, in Point point)
     {
         var queue = new Queue<Point>();
 
@@ -37,7 +37,7 @@ internal static class SpaceExtension
         return queue.Where(c => c != null && c.Value == SpaceService.ValuePointAsteroid).ToArray();
     }
 
-    private static Point GetPointByCoordinate(this int[][] space, int x, int y)
+    private static Point GetPointByCoordinate(this int[][] space, in int x, in int y)
     {
         var maxX = space.Length;
         var maxY = space.Max(c => c.Length);

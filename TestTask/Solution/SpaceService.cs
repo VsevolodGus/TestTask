@@ -9,7 +9,7 @@ public class SpaceService
 
     private readonly List<Node> rootNodes = new();
 
-    public int CountAsteroidInSpace(int[][] space)
+    public int CountAsteroidInSpace(in int[][] space)
     {
         for (int i = 0; i < space.Length; i++)
         {
@@ -25,7 +25,7 @@ public class SpaceService
         return rootNodes.Count;
     }
 
-    private void AddAsteroidInList(int[][] space, Point point)
+    private void AddAsteroidInList(int[][] space, in Point point)
     {
         var node = new Node(point);
         rootNodes.Add(node);

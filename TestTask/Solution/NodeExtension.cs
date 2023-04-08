@@ -13,7 +13,7 @@ internal static class NodeExtension
     /// <param name="root"></param>
     /// <param name="findPoint"></param>
     /// <returns></returns>
-    public static bool FindPointInTree(this Node root, Point findPoint)
+    public static bool FindPointInTree(this Node root, in Point findPoint)
     {
         var rootNode = new Node(root);
         var parents = new Queue<Node>();

@@ -10,7 +10,7 @@ internal static class GettingSpace
         return ConvertTextToSpace(allLine);
     }
 
-    private static int[][] ConvertTextToSpace(string[] lines)
+    private static int[][] ConvertTextToSpace(in string[] lines)
     {
         var result = new int[lines.Length][];
         for (var i = 0; i < lines.Length; i++)
