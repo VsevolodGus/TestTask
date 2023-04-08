@@ -4,6 +4,15 @@ namespace TestTask.Solution;
 
 internal static class NodeExtension
 {
+    /// <summary>
+    /// Можно оптимизировать сделав логику поиска на подобие бинарного дерева
+    /// мол findPoint.X > rootNode.Point.X, то берем только детей у которых X больше текущего
+    /// аналогично с Y
+    /// Если findPoint.X < rootNode.Point.X, то берем меньше
+    /// </summary>
+    /// <param name="root"></param>
+    /// <param name="findPoint"></param>
+    /// <returns></returns>
     public static bool FindPointInTree(this Node root, Point findPoint)
     {
         var rootNode = new Node(root);

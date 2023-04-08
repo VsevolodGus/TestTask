@@ -33,7 +33,7 @@ public class CountAsteroidInSpace
     }
 
     [Fact]
-    public void Small5AsteriodInSpace()
+    public void Small5AsteroidInSpace()
     {
         var space = new int[][]
         {

@@ -1,5 +1,4 @@
 ﻿using TestTask.Models;
-using TestTask.Solution;
 
 namespace TestTask.Solution;
 
@@ -16,7 +15,7 @@ public class SpaceService
                 var point = new Point(i, j, space[i][j]);
 
                 if (point.Value == ValuePointAsteroid && !AlreadyExistsPointInAsteroids(point))
-                    AddAsteroids(space, point);
+                    AddAsteroidInList(space, point);
             }
         }
 
@@ -26,11 +25,22 @@ public class SpaceService
     private bool AlreadyExistsPointInAsteroids(Point point)
         => rootNodes.Any(c => c.FindPointInTree(point));
 
-    private void AddAsteroids(int[][] space, Point point)
+    private void AddAsteroidInList(int[][] space, Point point)
     {
         var node = new Node(point);
         rootNodes.Add(node);
 
+        BuildAsteroid(space, node);
+    }
+
+    /// <summary>
+    /// Собираю дерево из соседних точек, и по ним ищу уже
+    /// Можно собирать граф, а не дерево
+    /// </summary>
+    /// <param name="space"></param>
+    /// <param name="node"></param>
+    private void BuildAsteroid(int[][] space, Node node)
+    {
         var queueNodes = new Queue<Node>();
         do
         {
