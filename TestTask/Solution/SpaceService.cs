@@ -4,8 +4,11 @@ namespace TestTask.Solution;
 
 public class SpaceService
 {
-    private readonly List<Node> rootNodes = new();
     public const int ValuePointAsteroid = 1;
+
+
+    private readonly List<Node> rootNodes = new();
+
     public int CountAsteroidInSpace(int[][] space)
     {
         for (int i = 0; i < space.Length; i++)
@@ -22,14 +25,10 @@ public class SpaceService
         return rootNodes.Count;
     }
 
-    private bool AlreadyExistsPointInAsteroids(Point point)
-        => rootNodes.Any(c => c.FindPointInTree(point));
-
     private void AddAsteroidInList(int[][] space, Point point)
     {
         var node = new Node(point);
         rootNodes.Add(node);
-
         BuildAsteroid(space, node);
     }
 
@@ -57,4 +56,8 @@ public class SpaceService
             }
         } while (queueNodes.TryDequeue(out node));
     }
+
+    private bool AlreadyExistsPointInAsteroids(Point point)
+       => rootNodes.Any(c => c.FindPointInTree(point));
+
 }
