@@ -1,0 +1,6 @@
+Чтобы запустить, нужно добавить файл data.txt
+в ...\TestTask\TestTask\bin\Debug\net7.0
+
+Основной алгоритм решения находится в файлах:
+1) \TestTask\TestTask\Solution\
+2) \TestTask\TestTask\Models\
