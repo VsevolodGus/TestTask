@@ -13,7 +13,7 @@ internal static class GettingSpace
     private static int[][] ConvertTextToSpace(string[] lines)
     {
         var result = new int[lines.Length][];
-        for (var i = 1; i < lines.Length; i++)
+        for (var i = 0; i < lines.Length; i++)
         {
             var symbols = lines[i].Split(",", StringSplitOptions.TrimEntries);
         
