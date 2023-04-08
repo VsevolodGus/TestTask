@@ -1,9 +1,12 @@
-﻿namespace TestTask;
+﻿using TestTask.Models;
+using TestTask.Solution;
+
+namespace TestTask.Solution;
 
 public class SpaceService
 {
-    private readonly List<Node> rootNodes = new ();
-
+    private readonly List<Node> rootNodes = new();
+    public const int ValuePointAsteroid = 1;
     public int CountAsteroidInSpace(int[][] space)
     {
         for (int i = 0; i < space.Length; i++)
@@ -12,7 +15,7 @@ public class SpaceService
             {
                 var point = new Point(i, j, space[i][j]);
 
-                if (point.Value == 1 && !AlreadyExistsPointInAsteroids(point))
+                if (point.Value == ValuePointAsteroid && !AlreadyExistsPointInAsteroids(point))
                     AddAsteroids(space, point);
             }
         }

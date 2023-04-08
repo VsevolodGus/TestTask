@@ -1,4 +1,4 @@
-﻿namespace TestTask;
+﻿namespace TestTask.Models;
 public class Point
 {
     public Point(int x, int y, int value = 1)

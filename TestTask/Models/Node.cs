@@ -1,4 +1,4 @@
-﻿namespace TestTask;
+﻿namespace TestTask.Models;
 internal class Node
 {
     public Node(Point point)

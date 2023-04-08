@@ -1,4 +1,4 @@
-﻿namespace TestTask;
+﻿namespace TestTask.WorkFile;
 
 internal static class GettingSpace
 {
@@ -16,7 +16,7 @@ internal static class GettingSpace
         for (var i = 0; i < lines.Length; i++)
         {
             var symbols = lines[i].Split(",", StringSplitOptions.TrimEntries);
-        
+
             var resultLine = new List<int>(symbols.Length);
             foreach (var symbol in symbols)
                 resultLine.Add(int.Parse(symbol));

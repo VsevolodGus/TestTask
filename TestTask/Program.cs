@@ -1,4 +1,5 @@
-﻿using TestTask;
+﻿using TestTask.Solution;
+using TestTask.WorkFile;
 
 var space = GettingSpace.GetModelSpaceFromFile();
 var spaceService = new SpaceService();

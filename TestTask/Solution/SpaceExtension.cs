@@ -1,4 +1,7 @@
-﻿namespace TestTask;
+﻿using TestTask.Models;
+using TestTask.Solution;
+
+namespace TestTask.Solution;
 
 internal static class SpaceExtension
 {
@@ -32,7 +35,7 @@ internal static class SpaceExtension
         queue.Enqueue(space.GetPointByCoordinate(point.X + 1, point.Y + 1));
 
 
-        return queue.Where(c => c != null && c.Value == 1).ToArray();
+        return queue.Where(c => c != null && c.Value == SpaceService.ValuePointAsteroid).ToArray();
     }
 
     private static Point GetPointByCoordinate(this int[][] space, int x, int y)

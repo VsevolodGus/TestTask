@@ -63,6 +63,22 @@ public class CountAsteroidInSpace
     }
 
     [Fact]
+    public void SeveralVerticalAsteroidInSpace()
+    {
+        var space = new int[][]
+        {
+            new int[] {1, 0, 0, 1, 1 },
+            new int[] {1, 0, 0, 1, 1 },
+            new int[] {1, 0, 0, 1, 1 },
+            new int[] {1, 0, 0, 1, 1 },
+            new int[] {1, 0, 0, 0, 0 },
+        };
+
+        var spaceService = new SpaceService();
+        Assert.Equal(2, spaceService.CountAsteroidInSpace(space));
+    }
+
+    [Fact]
     public void HorizontalAsteroidInSpace()
     {
         var space = new int[][]
@@ -77,14 +93,29 @@ public class CountAsteroidInSpace
     }
 
     [Fact]
+    public void SeveralHorizontalAsteroidInSpace()
+    {
+        var space = new int[][]
+        {
+            new int[] {1, 1, 1, 0, 0, },
+            new int[] {0, 0, 0, 0, 0, },
+            new int[] {1, 1, 1, 1, 0, },
+            new int[] {1, 1, 1, 1, 0, },
+            new int[] {0, 0, 0, 0, 0, },
+            new int[] {0, 0, 0, 1, 1, },
+        };
+
+        var spaceService = new SpaceService();
+        Assert.Equal(3, spaceService.CountAsteroidInSpace(space));
+    }
+
+    [Fact]
     public void DiagonalAsteroidInSpace()
     {
         var space = new int[][]
         {
             new int[] {1, 0, 0, 0, 1},
             new int[] {0, 1, 0, 1, 0},
-            new int[] {0, 0, 0, 0, 0},
-            new int[] {0, 0, 0, 0, 0},
             new int[] {0, 0, 0, 0, 0},
         };
 
@@ -100,8 +131,8 @@ public class CountAsteroidInSpace
             new int[] {1, 0, 1, 0, 0},
             new int[] {1, 1, 0, 0, 0},
             new int[] {0, 0, 0, 0, 1},
-            new int[] {0, 0, 1, 1, 1},
-            new int[] {0, 0, 0, 0, 1},
+            new int[] {0, 1, 1, 1, 1},
+            new int[] {1, 0, 0, 0, 1},
         };
 
         var spaceService = new SpaceService();
@@ -125,4 +156,38 @@ public class CountAsteroidInSpace
         var spaceService = new SpaceService();
         Assert.Equal(2, spaceService.CountAsteroidInSpace(space));
     }
+
+    [Fact]
+    public void DataFromFile()
+    {
+        var space = new int[][]
+        {
+            new int[] { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,0,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1 },
+            new int[] { 0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0 },
+            new int[] { 0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,0 },
+            new int[] { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 },
+            new int[] { 0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0 },
+            new int[] { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
+        };
+
+        var spaceService = new SpaceService();
+        Assert.Equal(8, spaceService.CountAsteroidInSpace(space));
+    }
+
+
+
 }

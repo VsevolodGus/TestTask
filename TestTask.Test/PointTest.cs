@@ -1,4 +1,5 @@
 ﻿namespace TestTask.Test;
+
 public class PointTest
 {
     [Fact]
