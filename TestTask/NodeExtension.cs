@@ -24,7 +24,7 @@ internal static class NodeExtension
     public static bool FindPointInTree(this Node root, Point findPoint)
     {
         var rootNode = new Node(root);
-        if(rootNode.Equals(findPoint))
+        if(rootNode.Point.Equals(findPoint))
             return true;
 
         var parents = new Queue<Node>();
@@ -32,7 +32,7 @@ internal static class NodeExtension
         {
             foreach (var item in rootNode.Children)
             {
-                if (item.Equals(findPoint))
+                if (item.Point.Equals(findPoint))
                     return true;
                 parents.Enqueue(item);
             }

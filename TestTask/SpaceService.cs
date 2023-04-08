@@ -1,10 +1,10 @@
 ﻿namespace TestTask;
 
-public static class SpaceService
+public class SpaceService
 {
-    private readonly static List<Node> rootNodes = new ();
+    private readonly List<Node> rootNodes = new ();
 
-    public static int CountAsteroidInSpace(this int[][] space)
+    public int CountAsteroidInSpace(int[][] space)
     {
         for (int i = 0; i < space.Length; i++)
         {
@@ -20,73 +20,28 @@ public static class SpaceService
         return rootNodes.Count;
     }
 
-    private static bool AlreadyExistsPointInAsteroids(Point point)
+    private bool AlreadyExistsPointInAsteroids(Point point)
         => rootNodes.Any(c => c.FindPointInTree(point));
 
-    private static void AddAsteroids(this int[][] space, Point point)
+    private void AddAsteroids(int[][] space, Point point)
     {
         var node = new Node(point);
         rootNodes.Add(node);
-        var maxX = space.Length;
-        var maxY = space.Min(c=> c.Length);
-        // TODO добавить логику 
-        // нужно добавлять к узлу соседние элементы, делая проверку на кол-во  на ограничения на границы массива
-        // делать это в цикле, не в рекурсии
 
-        //up [x][y-1]
-        //left [x-1][y]
-        //right [x+1][y]
-        //down [x][y+1]
-        // up left corner [x-1][y-1]
-        // up right corner [x+1][y-1]
-        // down left corner [x-1][y+1]
-        // down right corner [x+1][y+1]
         var queueNodes = new Queue<Node>();
-        queueNodes.Enqueue(node);
         do
         {
-            //up [x][y-1]
-            //left [x-1][y]
-            //right [x+1][y]
-            //down [x][y+1]
-            // up left corner [x-1][y-1]
-            // up right corner [x+1][y-1]
-            // down left corner [x-1][y+1]
-            // down right corner [x+1][y+1]
+            var points = space.GetNeighboringPoints(node.Point);
 
-            if (point.X == 0)
+            foreach (var p in points)
             {
-                // do not left [x-1][y]
-                // do not up left corner [x-1][y-1]
-                // do not down left corner [x-1][y+1]
-                queueNodes.Enqueue(node);
-            }
+                if (AlreadyExistsPointInAsteroids(p))
+                    continue;
 
-            if (point.Y == 0)
-            {
-                // do not up [x][y-1]
-                // do not up left corner [x-1][y-1]
-                // do not up right corner [x+1][y-1]
+                var childNode = new Node(p);
+                node.Children.Add(childNode);
+                queueNodes.Enqueue(childNode);
             }
-
-            if (point.X + 1 == maxX)
-            {
-                // do not left [x-1][y]
-                // do not up left corner [x-1][y-1]
-                // do not down left corner [x-1][y+1]
-            }
-
-            if (point.Y + 1 == maxY)
-            {
-                // do not down [x][y+1]
-                // do not down left corner [x-1][y+1]
-                // do not down right corner [x+1][y+1]
-            }
-
-        }while(false);
+        } while (queueNodes.TryDequeue(out node));
     }
-
-    private static Node GetCall(this int[][] space, int x, int y)
-        => new (new Point(x, y, space[x][y]));
-
 }

@@ -1,5 +1,5 @@
 ﻿using TestTask;
 
 var space = GettingSpace.GetModelSpaceFromFile();
-
-Console.WriteLine(space.CountAsteroidInSpace());
+var spaceService = new SpaceService();
+Console.WriteLine(spaceService.CountAsteroidInSpace(space));
