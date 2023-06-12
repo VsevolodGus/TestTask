@@ -1,4 +1,5 @@
-﻿using TestTask.Models;
+﻿using System.Runtime.CompilerServices;
+using TestTask.Models;
 
 namespace TestTask.Solution;
 
@@ -6,9 +7,9 @@ public class SpaceService
 {
     public const int ValuePointAsteroid = 1;
 
-
+    #region Получение кол-во астероидов
     private readonly List<Node> rootNodes = new();
-
+    
     public int CountAsteroidInSpace(in int[][] space)
     {
         for (int i = 0; i < space.Length; i++)
@@ -59,5 +60,27 @@ public class SpaceService
 
     private bool AlreadyExistsPointInAsteroids(Point point)
        => rootNodes.Any(c => c.FindPointInTree(point));
+    #endregion
 
+    #region Самый короткий путь мимо астероидов
+
+    /// <summary>
+    /// Сразу подразумевается, что точка From и TO не является атероидом, позже можно будет добавить проверки на это
+    /// Получение самого коротнкого пути от одной точки до другой
+    /// 1) самый котороткий путь
+    /// 2) если доступного пути нет
+    /// Лушче использовать муравьиный алгоритм
+    /// </summary>
+    /// <param name="space"></param>
+    /// <param name="fromPoint"></param>
+    /// <param name="toPoint"></param>
+    /// <returns>длина пути, если нет доступного пути то возвращается null</returns>
+    public int? GetShortWay(int[][] space, Point fromPoint, Point toPoint)
+    {
+        var node = new Node(fromPoint);
+
+        return 0;
+    }
+
+    #endregion
 }
