@@ -1,6 +1,10 @@
 ﻿namespace TestTask.Models;
-internal class Node
+
+public class Node
 {
+    public Node() 
+    { }
+
     public Node(Point point)
     {
         Point = point;
@@ -13,9 +17,9 @@ internal class Node
         Children = node.Children;
     }
 
-    public Point Point { get; }
+    public Point Point { get; init; }
 
-    public ICollection<Node> Children { get; }
+    public ICollection<Node> Children { get; init; }
 
 }
 
