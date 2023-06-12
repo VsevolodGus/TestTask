@@ -34,7 +34,7 @@ internal static class SpaceExtension
         queue.Enqueue(space.GetPointByCoordinate(point.X + 1, point.Y + 1));
 
 
-        return queue.Where(c => c != null && c.Value == SpaceService.ValuePointAsteroid).ToArray();
+        return queue.Where(c => c != null).ToArray();
     }
 
     private static Point GetPointByCoordinate(this int[][] space, in int x, in int y)

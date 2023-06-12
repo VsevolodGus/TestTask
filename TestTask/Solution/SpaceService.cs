@@ -44,7 +44,7 @@ public class SpaceService
         var queueNodes = new Queue<Node>();
         do
         {
-            var points = space.GetNeighboringPoints(node.Point);
+            var points = space.GetNeighboringPoints(node.Point).Where(c=> c.Value == ValuePointAsteroid).ToArray();
 
             foreach (var p in points)
             {
@@ -77,10 +77,7 @@ public class SpaceService
     /// <returns>длина пути, если нет доступного пути то возвращается null</returns>
     public int? GetShortWay(int[][] space, Point fromPoint, Point toPoint)
     {
-        var node = new Node(fromPoint);
-
         return 0;
     }
-
     #endregion
 }
